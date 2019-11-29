@@ -1,111 +1,140 @@
 <template>
   <div class="Header">
-    <el-container>
-      <el-header>
-        <el-breadcrumb separator-class="el-icon-arrow-right">
-          <el-breadcrumb-item
-            v-for="(item,i) in list"
-            :key="i"
-            :to="{ path: item.path }"
-          >{{item.name}}</el-breadcrumb-item>
-        </el-breadcrumb>
-      </el-header>
-      <el-container>
-        <el-aside width="220px">
-          <el-menu
-            default-active="1"
-            class="el-menu-vertical-demo"
-            @open="handleOpen"
-            @close="handleClose"
-          >
-            <el-submenu
-              v-for="(item,i) in mune"
-              :key="i"
-              :index="item.path"
-            >
-              <template slot="title">
-                <i :class="item.icon"></i>
-                <span>{{item.name}}</span>
-              </template>
-              <el-submenu
-                default-openeds
-                v-for="(list,i) in item.child"
-                :key="i"
-                :index="list.path"
-              >
-                <template slot="title">{{list.name}}</template>
-                <el-menu-item
-                  v-for="(mune,i) in list.child"
-                  :key="i"
-                  :index="mune.id"
-                >{{mune.name}}</el-menu-item>
-              </el-submenu>
-            </el-submenu>
-          </el-menu>
-        </el-aside>
-      </el-container>
-    </el-container>
-    <el-main>
-      <router-view></router-view>
-    </el-main>
+    <Sidebar
+      :menuList="menuList"
+      :active="active"
+    ></Sidebar>
+    <div class="top">
+      <el-breadcrumb separator-class="el-icon-arrow-right">
+        <el-breadcrumb-item
+          v-for="(item,i) in list"
+          :key="i"
+          :to="{ path: item.path }"
+        >{{item.title}}</el-breadcrumb-item>
+      </el-breadcrumb>
+      <el-tag
+        :key="i"
+        v-for="(tag,i) in mune"
+        closable
+        :disable-transitions="false"
+        @close="handleClose(i)"
+      >
+        <router-link :to="tag.path">{{tag.title}}</router-link>
+      </el-tag>
+    </div>
+    <router-view />
   </div>
 </template>
 <script>
+import Sidebar from "./muneitem.vue";
 export default {
   name: "Header",
+  components: {
+    Sidebar
+  },
+
   data() {
     return {
-      key: "/",
-      list: [
-        { name: "首页", path: "/home" },
-        { name: "首页", path: "/home" },
-        { name: "首页", path: "/home" }
-      ],
-      mune: [
+      active: "/new",
+      list: [],
+      mune: [],
+      menuList: [
         {
-          name: "导航",
-          icon: "el-icon-location",
+          title: "About",
           path: "/",
-          id: "1",
-          child: [
-            { name: "导航a", path: "/new", id: "1-1" },
-            { name: "导航b", path: "/one", id: "1-2" }
+          icon: "el-icon-menu",
+          children: [
+            {
+              title: "ABC",
+              path: "/abc",
+              children: []
+            },
+            {
+              title: "About US",
+              path: "/one",
+              children: []
+            },
+
+            {
+              title: "About Comp",
+              path: "/two",
+              children: [
+                {
+                  title: "list",
+                  path: "/tre",
+                  children: []
+                }
+              ]
+            }
           ]
         },
         {
-          name: "导航",
-          path: "/2",
-          icon: "el-icon-location",
-          id: "2",
-          child: [
-            {
-              name: "导航a",
-              path: "/3",
-              id: "2-1",
-              child: [
-                { name: "导航a1", path: "/4", id: "2-1-1" },
-                { name: "导航b", path: "/5", id: "2-2-2" }
-              ]
-            },
-            { name: "导航b", path: "/6", id: "2-2" }
-          ]
+          title: "Link",
+          path: "/four",
+          icon: "el-icon-menu",
+          children: []
         }
       ]
     };
   },
+  mounted() {
+    console.log(this.menuList[0].title)
+    let data={}
+    // data.title=this.menuList[0].title
+    // data.path=this.menuList[0].path
+    // this.mune=data
+    // this.mune.title=this.menuList[0].title
+    // this.mune.path=this.menuList[0].path
+  },
   methods: {
-    handleOpen(key, keyPath) {
-      if (key != this.key) {
-        this.$router.push(key);
-        this.key = key;
+    handleClose(i) {
+      consoel.log(i)
+      this.mune.splice(this.mune[i],1);
+    }
+  },
+  watch: {
+    $route(to, from) {
+      let newlists = [];
+      this.$route.matched.map(item => {
+        let newlist = {};
+        if (item.meta.path == undefined) {
+          newlist.path = "/";
+        } else {
+          newlist.path = item.path;
+        }
+        newlist.title = item.meta.title;
+        newlists.push(newlist);
+      });
+      console.log(newlists);
+      this.list = newlists;
+
+      function flat(arr) {
+        return [].concat(
+          ...arr.map(item => [].concat(item, ...flat(item.children)))
+        );
       }
-      return;
-    },
-    handleClose(key, keyPath) {
-      if (key != this.key) {
-        this.$router.push(key);
-        this.key = key;
+      let newlist = flat(this.menuList);
+      let tolist = [];
+      let fromlist = [];
+      newlist.map(item => {
+        if (item.path == to.path) {
+          // console.log(item)
+          tolist = item;
+        } else if (item.path == from.path) {
+          fromlist = item;
+        }
+      });
+      let ispush = true;
+      this.mune.map(list => {
+        if (list.title == tolist.title) {
+          ispush = false;
+        }
+      });
+      if (ispush) {
+        this.mune.push(tolist);
       }
+      this.active = to.path;
+      // 对路由变化作出响应...
     }
   }
 };
@@ -113,19 +142,22 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1,
-h2 {
-  font-weight: normal;
+.top {
+  position: absolute;
+  left: 270px;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+.el-breadcrumb {
+  margin-bottom: 15px;
 }
-li {
+.el-breadcrumb__item {
+  line-height: 30px;
+}
+.el-tag {
+  margin-right: 10px;
+}
+.el-tag > a {
   display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+  color: #409eff;
+  text-decoration: none;
 }
 </style>

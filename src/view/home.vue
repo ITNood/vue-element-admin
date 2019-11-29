@@ -13,20 +13,6 @@ export default {
   },
   data() {
     return {
-      list: [
-        {
-          name: "首页",
-          path: "/"
-        },
-        {
-          name: "首页",
-          path: "/home/news"
-        },
-        {
-          name: "首页",
-          path: "/"
-        }
-      ]
     };
   },
   methods: {
