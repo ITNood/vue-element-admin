@@ -23,15 +23,9 @@ export default new Router({
         name: "new",
         path: "/new",
         component: New,
-        meta: { title: "",},
+        meta: { title: "new",},
       },
-      {
-        name: "tre",
-        path: "tre",
-        component: Tre,
-        meta: { title: "456" },
-
-      },
+      
       {
         name: "ABC",
         path: "abc",
@@ -48,7 +42,16 @@ export default new Router({
         name: "two",
         path: "two",
         component: Two,
-        meta: { title: "222" },
+        meta: { title: "About Comp" },
+        children: [
+          {
+            name: "tre",
+            path: "/tre",
+            component: Tre,
+            meta: { title: "456" },
+
+          },
+        ]
       },
       {
         name: "four",

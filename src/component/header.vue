@@ -15,17 +15,20 @@
       <el-tag
         :key="i"
         v-for="(tag,i) in mune"
-        closable
+        :closable="i>0"
         :disable-transitions="false"
         @close="handleClose(i)"
       >
         <router-link :to="tag.path">{{tag.title}}</router-link>
       </el-tag>
+      
     </div>
+
     <router-view />
   </div>
 </template>
 <script>
+import listRoutes from '../router/routes'
 import Sidebar from "./muneitem.vue";
 export default {
   name: "Header",
@@ -35,61 +38,28 @@ export default {
 
   data() {
     return {
-      active: "/new",
+      active: "",
       list: [],
       mune: [],
-      menuList: [
-        {
-          title: "About",
-          path: "/",
-          icon: "el-icon-menu",
-          children: [
-            {
-              title: "ABC",
-              path: "/abc",
-              children: []
-            },
-            {
-              title: "About US",
-              path: "/one",
-              children: []
-            },
-
-            {
-              title: "About Comp",
-              path: "/two",
-              children: [
-                {
-                  title: "list",
-                  path: "/tre",
-                  children: []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          title: "Link",
-          path: "/four",
-          icon: "el-icon-menu",
-          children: []
-        }
-      ]
+      menuList: []
     };
   },
+  created() {
+    this.menuList=listRoutes.routes
+  },
   mounted() {
-    console.log(this.menuList[0].title)
-    let data={}
-    // data.title=this.menuList[0].title
-    // data.path=this.menuList[0].path
-    // this.mune=data
-    // this.mune.title=this.menuList[0].title
-    // this.mune.path=this.menuList[0].path
+    console.log(this.menuList);
+    console.log(this.$route);
+    let data = {};
+    this.active = this.$route.fullPath;
+    data.title = this.menuList[0].title;
+    data.path = this.menuList[0].path;
+    this.mune = this.mune.concat(data);
+    this.list = this.list.concat(data);
   },
   methods: {
     handleClose(i) {
-      consoel.log(i)
-      this.mune.splice(this.mune[i],1);
+      this.mune.splice(i, 1);
     }
   },
   watch: {
