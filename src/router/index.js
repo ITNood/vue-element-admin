@@ -46,7 +46,6 @@ export default new Router({
             path: "/tre",
             component: Tre,
             meta: { title: "接口",icon:"" },
-
           },
         ]
       }

@@ -21,25 +21,20 @@ const listRoutes = {
                 children: []
             },
 
-            {
-                title: "数据",
-                path: "/two",
-                children: [
-                    {
-                        title: "接口",
-                        path: "/tre",
-                        children: []
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        title: "仓库",
-        path: "/four",
-        icon: "el-icon-s-tools",
-        children: []
-    }]
+                {
+                    title: "数据",
+                    path: "/two",
+                    children: [
+                        {
+                            title: "接口",
+                            path: "/tre",
+                            children: []
+                        }
+                    ]
+                }
+            ]
+        },
+    ]
 }
 
 export default listRoutes
