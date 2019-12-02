@@ -21,9 +21,7 @@
       >
         <router-link :to="tag.path">{{tag.title}}</router-link>
       </el-tag>
-      
     </div>
-
     <router-view />
   </div>
 </template>

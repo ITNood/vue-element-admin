@@ -17,7 +17,7 @@ export default new Router({
       title: "仓库",
       path: "/",
       icon: "el-icon-s-tools",
-      children: []
+      children: [],
     },
     {
       title: "导航",
