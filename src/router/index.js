@@ -12,54 +12,46 @@ import Two from "../view/two.vue"
 Vue.use(Router)
 
 export default new Router({
-  routes: [{
-    name: "ABOUT",
-    path: "/",
-    redirect: "/new",
-    component: Home,
-    meta: { title: "about" },
-    children: [
-      {
-        name: "new",
-        path: "/new",
-        component: New,
-        meta: { title: "new",},
-      },
-      
-      {
-        name: "ABC",
-        path: "abc",
-        component: One,
-        meta: { title: "ABC" },
-      },
-      {
-        name: "one",
-        path: "one",
-        component: One,
-        meta: { title: " about US" },
-      },
-      {
-        name: "two",
-        path: "two",
-        component: Two,
-        meta: { title: "About Comp" },
-        children: [
-          {
-            name: "tre",
-            path: "/tre",
-            component: Tre,
-            meta: { title: "456" },
+  routes: [
+    {
+      title: "仓库",
+      path: "/",
+      icon: "el-icon-s-tools",
+      children: []
+    },
+    {
+      title: "导航",
+      path: "/four",
+      icon: "el-icon-menu",
+      children: [
+        {
+          title: "新闻",
+          path: "/new",
+          children: []
+        },
+        {
+          title: "我的",
+          path: "/abc",
+          children: []
+        },
+        {
+          title: "关于我们",
+          path: "/one",
+          children: []
+        },
 
-          },
-        ]
-      },
-      {
-        name: "four",
-        path: "four",
-        component: Four,
-        meta: { title: "111" },
-      },
-    ]
-  },
+        {
+          title: "数据",
+          path: "/two",
+          children: [
+            {
+              title: "接口",
+              path: "/tre",
+              children: []
+            }
+          ]
+        }
+      ]
+    },
   ]
 })
