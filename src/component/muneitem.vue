@@ -38,20 +38,20 @@ export default {
       return this.$route.path
     },
     fatherPath(){
-      console.log(this.$router.options)
+      // console.log(this.$router.options)
       // 这里直接获取路由配置的 '/' 项
       return this.$router.options.routes[1].path
     }
   },
   methods:{
      handleOpen(key, keyPath) {
-        console.log(key, keyPath);
+        // console.log(key, keyPath);
       },
       handleClose(key, keyPath) {
-        console.log(key, keyPath);
+        // console.log(key, keyPath);
       }, 
       alldata(e){
-        console.log(e)
+        // console.log(e)
       }
   },
   mounted(){

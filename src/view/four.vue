@@ -1,10 +1,11 @@
 <template>
   <div class="home">
-      four
+    123
       </div>
 </template>
 
 <script>
+import Header from "../component/header"
 export default {
   name: 'news',
   data () {

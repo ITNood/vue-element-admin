@@ -12,21 +12,19 @@
           :to="{ path: item.path }"
         >{{item.title}}</el-breadcrumb-item>
       </el-breadcrumb>
-      <el-tag
-        :key="i"
-        v-for="(tag,i) in mune"
-        :closable="i>0"
-        :disable-transitions="false"
-        @close="handleClose(i)"
-      >
-        <router-link :to="tag.path">{{tag.title}}</router-link>
-      </el-tag>
+      <router-link :to="tag.path" v-for="(tag,i) in mune" :key="i">
+        <el-tag
+          :closable="i>0"
+          :disable-transitions="false"
+          @close="handleClose(i)"
+        >
+          {{tag.title}}
+        </el-tag>
+      </router-link>
     </div>
-    <router-view />
   </div>
 </template>
 <script>
-import listRoutes from '../router/routes'
 import Sidebar from "./muneitem.vue";
 export default {
   name: "Header",
@@ -43,19 +41,27 @@ export default {
     };
   },
   created() {
-    this.menuList=listRoutes.routes
+    this.menuList = this.$router.options.routes;
   },
   mounted() {
     console.log(this.menuList);
-    console.log(this.$route);
+    // console.log(this.$router.options.routes);
     let data = {};
-    this.active = this.$route.fullPath;
-    data.title = this.menuList[0].title;
+    //页面最初赋值
+    this.active = this.$route.path;
+    if (this.menuList[0].children.length) {
+      data.title = this.menuList[0].children[0].meta.title;
+    } else {
+      data.title = this.menuList[0].meta.title;
+    }
+
     data.path = this.menuList[0].path;
     this.mune = this.mune.concat(data);
     this.list = this.list.concat(data);
+    // console.log(this.$route)
   },
   methods: {
+    //标签关闭
     handleClose(i) {
       this.mune.splice(i, 1);
     }
@@ -63,53 +69,42 @@ export default {
   watch: {
     $route(to, from) {
       let newlists = [];
+      // 监视路由显示路由的
       this.$route.matched.map(item => {
         let newlist = {};
-        if (item.meta.path == undefined) {
-          newlist.path = "/";
-        } else {
-          newlist.path = item.path;
-        }
+        newlist.path = item.path;
         newlist.title = item.meta.title;
         newlists.push(newlist);
       });
-      console.log(newlists);
+      // console.log(newlists);
       this.list = newlists;
 
-      function flat(arr) {
-        return [].concat(
-          ...arr.map(item => [].concat(item, ...flat(item.children)))
-        );
-      }
-      let newlist = flat(this.menuList);
-      let tolist = [];
-      let fromlist = [];
-      newlist.map(item => {
-        if (item.path == to.path) {
-          // console.log(item)
-          tolist = item;
-        } else if (item.path == from.path) {
-          fromlist = item;
-        }
-      });
+      //tag菜单 添加新的
+      let newlist = {};
+      //console.log(to)
+      newlist.title = to.meta.title;
+      newlist.path = to.path;
+      console.log(to);
       let ispush = true;
       this.mune.map(list => {
-        if (list.title == tolist.title) {
+        if (list.title == newlist.title) {
           ispush = false;
         }
       });
       if (ispush) {
-        this.mune.push(tolist);
+        this.mune.push(newlist);
       }
-      this.active = to.path;
+
       // 对路由变化作出响应...
+      console.log(to.path);
+      this.active = to.path;
     }
   }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
 .top {
   position: absolute;
   left: 270px;
@@ -127,5 +122,16 @@ export default {
   display: inline-block;
   color: #409eff;
   text-decoration: none;
+}
+a.router-link-exact-active>.el-tag {
+  color: white;
+  background: rgb(64, 158, 255)
+}
+a.router-link-exact-active>.el-tag>i{
+  color: white !important;
+}
+a.router-link-exact-active>.el-tag>i:hover{
+  background: white;
+  color: #409eff !important;
 }
 </style>

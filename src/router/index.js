@@ -6,52 +6,59 @@ import One from "../view/one.vue"
 import Tre from "../view/tre.vue"
 import Four from "../view/four.vue"
 import Two from "../view/two.vue"
-
-
-
 Vue.use(Router)
-
 export default new Router({
   routes: [
     {
-      title: "仓库",
+      name: "仓库",
       path: "/",
-      icon: "el-icon-s-tools",
-      children: [],
+      component: Home,
+      meta: { title: "仓库", icon: "el-icon-s-tools", },
+      children: []
     },
     {
-      title: "导航",
+      name: "导航",
       path: "/four",
-      icon: "el-icon-menu",
+      component: Four,
+     
+      meta: { title: "导航", icon: "el-icon-menu" },
       children: [
         {
-          title: "新闻",
+          //name属性与一级一致则不会新增
+          name: "新闻",
           path: "/new",
-          children: []
-        },
-        {
-          title: "我的",
-          path: "/abc",
-          children: []
-        },
-        {
-          title: "关于我们",
-          path: "/one",
-          children: []
+          component: New,
+          meta: { title: "新闻", icon: "" },
         },
 
         {
-          title: "数据",
+          name: "我的",
+          path: "/abc",
+          component: One,
+          meta: { title: "我的", icon: "" },
+        },
+        {
+          name: "关于我们",
+          path: "/one",
+          component: One,
+          meta: { title: " 关于我们", icon: "" },
+        },
+        {
+          name: "数据",
           path: "/two",
+          component: Two,
+          meta: { title: "数据", icon: "" },
           children: [
             {
-              title: "接口",
+              name: "接口",
               path: "/tre",
-              children: []
-            }
+              component: Tre,
+              meta: { title: "接口", icon: "" },
+            },
           ]
         }
       ]
     },
+
   ]
 })

@@ -4,14 +4,13 @@
     <router-view/>
   </div>
 </template>
-
 <script>
-import Header from　"./component/header"
+import Header from "./component/header";
 export default {
   name: 'App',
-  comments:{
+    components: {
     Header
-  }
+  },
 }
 </script>
 
