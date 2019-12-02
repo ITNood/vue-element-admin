@@ -1,16 +1,13 @@
 <template>
   <div class="home">
-    <Header />
+    <router-view/>
   </div>
 </template>
 
 <script>
-import Header from "../component/header";
 export default {
   name: "Home",
-  components: {
-    Header
-  },
+
   data() {
     return {
     };

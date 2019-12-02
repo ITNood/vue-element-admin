@@ -2,20 +2,19 @@
   <div v-if="item.children">
     <template v-if="item.children.length == 0">
       <el-menu-item :index="item.path">
-        <i :class="item.icon"></i>
-        {{item.title}}
+        <i :class="item.meta.icon"></i>
+        {{item.meta.title}}
       </el-menu-item>
     </template>
-
     <el-submenu
       v-else
       :index="item.path"
     >
       <template slot="title">
-        <i :class="item.icon"></i>
-        {{item.title}}
-      </template>
+        <i :class="item.meta.icon"></i>
+                {{item.meta.title}}
 
+      </template>
       <template v-for="child in item.children">
         <sidebar-item
           v-if="child.children&&child.children.length>0"
@@ -27,13 +26,12 @@
           :key="child.path"
           :index="child.path"
         >
-          {{child.title}}
+          {{child.meta.title}}
         </el-menu-item>
       </template>
     </el-submenu>
   </div>
 </template>
-
 <script>
 export default {
   name: "SidebarItem",
@@ -44,7 +42,7 @@ export default {
     }
   },
   mounted() {
-     console.log(this.item)
+      console.log(this.item)
   }
 };
 </script>

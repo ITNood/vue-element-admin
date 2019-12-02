@@ -21,10 +21,7 @@
       >
         <router-link :to="tag.path">{{tag.title}}</router-link>
       </el-tag>
-      
     </div>
-
-    <router-view />
   </div>
 </template>
 <script>
@@ -45,19 +42,23 @@ export default {
     };
   },
   created() {
-    this.menuList=listRoutes.routes
+    this.menuList=this.$router.options.routes
+
   },
   mounted() {
-    console.log(this.menuList);
-    console.log(this.$route);
+    // console.log(this.menuList);
+    // console.log(this.$router.options.routes);
     let data = {};
+    //页面最初赋值
     this.active = this.$route.fullPath;
-    data.title = this.menuList[0].title;
+    data.title = this.menuList[0].name;
     data.path = this.menuList[0].path;
     this.mune = this.mune.concat(data);
     this.list = this.list.concat(data);
+    // console.log(this.$route)
   },
   methods: {
+    //标签关闭
     handleClose(i) {
       this.mune.splice(i, 1);
     }
@@ -65,46 +66,36 @@ export default {
   watch: {
     $route(to, from) {
       let newlists = [];
+      // 监视路由显示路由的
       this.$route.matched.map(item => {
         let newlist = {};
-        if (item.meta.path == undefined) {
-          newlist.path = "/";
-        } else {
           newlist.path = item.path;
-        }
-        newlist.title = item.meta.title;
-        newlists.push(newlist);
+          newlist.title = item.meta.title;
+          newlists.push(newlist);
       });
-      console.log(newlists);
+      // console.log(newlists);
       this.list = newlists;
-
-      function flat(arr) {
-        return [].concat(
-          ...arr.map(item => [].concat(item, ...flat(item.children)))
-        );
-      }
-      let newlist = flat(this.menuList);
-      let tolist = [];
-      let fromlist = [];
-      newlist.map(item => {
-        if (item.path == to.path) {
-          // console.log(item)
-          tolist = item;
-        } else if (item.path == from.path) {
-          fromlist = item;
-        }
-      });
+      // function flat(arr) {
+      //   return [].concat(
+      //     ...arr.map(item => [].concat(item, ...flat(item.children)))
+      //   );
+      // }
+      //tag菜单 添加新的
+      let newlist = {}
+      newlist.title=to.name
+      newlist.path=to.path
+      console.log(to)
       let ispush = true;
       this.mune.map(list => {
-        if (list.title == tolist.title) {
+        if (list.title == newlist.title) {
           ispush = false;
         }
       });
       if (ispush) {
-        this.mune.push(tolist);
+        this.mune.push(newlist);
       }
-      this.active = to.path;
       // 对路由变化作出响应...
+      this.active = to.path;
     }
   }
 };

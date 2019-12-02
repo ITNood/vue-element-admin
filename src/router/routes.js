@@ -2,6 +2,7 @@ const listRoutes = {
     routes: [{
         title: "导航",
         path: "/",
+        redirect:"new",
         icon: "el-icon-menu",
         children: [
             {
