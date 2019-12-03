@@ -56,12 +56,66 @@ a {
     height: 80px;
     box-sizing: border-box;
 
-    .el-breadcrumb {
-        line-height: 45px;
+    .breadcrumb-title {
+        height: 43px;
+
+        &:after {
+            clear: both;
+            content: '';
+            height: 0;
+            display: block;
+            overflow: visible;
+        }
+
+        .el-breadcrumb {
+            line-height: 43px;
+            display: block;
+            float: left;
+        }
+
+        .user {
+            float: right;
+            display: flex;
+            align-items: center;
+            box-sizing: border-box;
+
+            .new {
+                margin-right: 25px;
+
+                a {
+                    display: block;
+                    i {
+                        font-size: 24px;
+                        color: #606266;
+                        cursor: pointer;
+                    }
+                }
+
+                .el-badge__content {
+                    margin-top: 3px;
+                }
+            }
+
+            .el-dropdown-link {
+                height: 43px;
+                display: flex;
+                align-items: center;
+                box-sizing: border-box;
+                cursor: pointer;
+
+                img {
+                    width: 40px;
+                    border-radius: 50%;
+                }
+            }
+
+        }
     }
 
     .tag-view {
         overflow-x: auto;
+        border-top: 1px solid #f1f1f1;
+        padding-top: 2px;
 
         a {
             margin-right: 10px;

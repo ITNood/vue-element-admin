@@ -5,13 +5,31 @@
       :active="active"
     ></Sidebar>
     <div class="top">
-      <el-breadcrumb separator-class="el-icon-arrow-right">
-        <el-breadcrumb-item
-          v-for="(item,i) in list"
-          :key="i"
-          :to="{ path: item.path }"
-        >{{item.title}}</el-breadcrumb-item>
-      </el-breadcrumb>
+      <div class="breadcrumb-title">
+        <el-breadcrumb separator-class="el-icon-arrow-right">
+          <el-breadcrumb-item
+            v-for="(item,i) in list"
+            :key="i"
+            :to="{ path: item.path }"
+          >{{item.title}}</el-breadcrumb-item>
+        </el-breadcrumb>
+        <div class="user">
+          <el-badge
+            :value="value"
+            class="new"
+            type="primary"
+          >
+            <router-link to=""><i class="el-icon-bell"></i></router-link>
+          </el-badge>
+          <el-dropdown trigger="click">
+            <span class="el-dropdown-link"><img src="../../static/image/avatar.gif"><i class="el-icon-arrow-down el-icon--right"></i></span>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item>我的资料</el-dropdown-item>
+              <el-dropdown-item>退出登录</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+        </div>
+      </div>
       <div class="tag-view">
         <router-link
           :to="tag.path"
@@ -43,7 +61,8 @@ export default {
       active: "",
       list: [],
       mune: [],
-      menuList: []
+      menuList: [],
+      value:15
     };
   },
   created() {
@@ -111,5 +130,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-
 </style>
