@@ -1,58 +1,46 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from "../view/home.vue"
-import New from "../view/new.vue"
-import One from "../view/one.vue"
-import Tre from "../view/tre.vue"
-import Four from "../view/four.vue"
-import Two from "../view/two.vue"
 Vue.use(Router)
 export default new Router({
   routes: [
     {
       name: "仓库",
       path: "/",
-      component: Home,
+      component: ()=>import('@/view/home'),
       meta: { title: "仓库", icon: "el-icon-s-tools", },
       children: []
     },
     {
-      name: "导航",
-      path: "/four",
-      component: Four,
-     
+     // name: "导航",
+      path: "/redirect",
+      //component: Four,
       meta: { title: "导航", icon: "el-icon-menu" },
       children: [
         {
           //name属性与一级一致则不会新增
           name: "新闻",
           path: "/new",
-          component: New,
+          component: ()=>import('@/view/new'),
           meta: { title: "新闻", icon: "" },
         },
 
         {
           name: "我的",
-          path: "/abc",
-          component: One,
+          path: "/one",
+          component: ()=>import('@/view/one'),
           meta: { title: "我的", icon: "" },
         },
-        {
-          name: "关于我们",
-          path: "/one",
-          component: One,
-          meta: { title: " 关于我们", icon: "" },
-        },
+        
         {
           name: "数据",
           path: "/two",
-          component: Two,
+          component: ()=>import('@/view/two'),
           meta: { title: "数据", icon: "" },
           children: [
             {
               name: "接口",
               path: "/tre",
-              component: Tre,
+              component: ()=>import('@/view/tre'),
               meta: { title: "接口", icon: "" },
             },
           ]

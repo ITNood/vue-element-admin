@@ -1,5 +1,5 @@
 <template>
-  <div class="Header">
+  <div>
     <Sidebar
       :menuList="menuList"
       :active="active"
@@ -12,15 +12,21 @@
           :to="{ path: item.path }"
         >{{item.title}}</el-breadcrumb-item>
       </el-breadcrumb>
-      <router-link :to="tag.path" v-for="(tag,i) in mune" :key="i">
-        <el-tag
-          :closable="i>0"
-          :disable-transitions="false"
-          @close="handleClose(i)"
+      <div class="tag-view">
+        <router-link
+          :to="tag.path"
+          v-for="(tag,i) in mune"
+          :key="i"
         >
-          {{tag.title}}
-        </el-tag>
-      </router-link>
+          <el-tag
+            :closable="i>0"
+            :disable-transitions="false"
+            @close="handleClose(i)"
+          >
+            {{tag.title}}
+          </el-tag>
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -105,33 +111,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-.top {
-  position: absolute;
-  left: 270px;
-}
-.el-breadcrumb {
-  margin-bottom: 15px;
-}
-.el-breadcrumb__item {
-  line-height: 30px;
-}
-.el-tag {
-  margin-right: 10px;
-}
-.el-tag > a {
-  display: inline-block;
-  color: #409eff;
-  text-decoration: none;
-}
-a.router-link-exact-active>.el-tag {
-  color: white;
-  background: rgb(64, 158, 255)
-}
-a.router-link-exact-active>.el-tag>i{
-  color: white !important;
-}
-a.router-link-exact-active>.el-tag>i:hover{
-  background: white;
-  color: #409eff !important;
-}
+
 </style>
