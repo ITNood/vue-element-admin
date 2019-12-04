@@ -13,7 +13,6 @@ export default new Router({
     {
       //name: "导航",
       path: "/redirect",
-      //component: Four,
       component: ()=>import('@/view/four'),
       meta: { title: "导航", icon: "el-icon-menu" },
       children: [
@@ -21,7 +20,7 @@ export default new Router({
           //name属性与一级一致则不会新增
           name: "new",
           path: "/new",
-          // component: ()=>import('@/view/new'),
+          component: ()=>import('@/view/new'),
           meta: { title: "新闻", icon: "" },
         },
 

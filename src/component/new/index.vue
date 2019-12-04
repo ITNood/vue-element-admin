@@ -15,6 +15,7 @@ export default {
     return {};
   },
   mounted() {
+    console.log(this)
     var myChart = this.$echarts.init(document.getElementById("echarts1"));
     // 指定图表的配置项和数据
     var option = {
