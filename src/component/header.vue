@@ -70,7 +70,7 @@ export default {
     this.menuList = this.$router.options.routes;
   },
   mounted() {
-    console.log(this.menuList);
+    //console.log(this.menuList);
     // console.log(this.$router.options.routes);
     let data = {};
     //页面最初赋值
@@ -110,7 +110,7 @@ export default {
       //console.log(to)
       newlist.title = to.meta.title;
       newlist.path = to.path;
-      console.log(to);
+     // console.log(to);
       let ispush = true;
       this.mune.map(list => {
         if (list.title == newlist.title) {
@@ -122,7 +122,7 @@ export default {
       }
 
       // 对路由变化作出响应...
-      console.log(to.path);
+     // console.log(to.path);
       this.active = to.path;
     }
   }

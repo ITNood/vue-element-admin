@@ -61,7 +61,7 @@ export default {
     }
   },
   mounted() {
-    console.log(this.menuList);
+    //console.log(this.menuList);
   }
 };
 </script>
