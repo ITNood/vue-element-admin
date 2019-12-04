@@ -7,7 +7,7 @@ export default new Router({
       name: "home",
       path: "/",
       component: ()=>import('@/view/home'),
-      meta: { title: "仓库", icon: "el-icon-s-tools", },
+      meta: { title: "首页", icon: "el-icon-s-tools", },
        children: []
     },
     {
@@ -18,10 +18,10 @@ export default new Router({
       children: [
         {
           //name属性与一级一致则不会新增
-          name: "new",
-          path: "/new",
-          component: ()=>import('@/view/new'),
-          meta: { title: "新闻", icon: "" },
+          name: "echarts",
+          path: "/echarts",
+          component: ()=>import('@/view/echarts'),
+          meta: { title: "echarts", icon: "" },
         },
 
         {
