@@ -94,12 +94,12 @@ export default {
       // console.log(this.mune.length)
       
        if(this.mune.length==i){
-         console.log(1)
         this.$router.push(this.mune[i-1].path)
+       }else if(this.tagClass<i){
+         return
        }else{
           this.tagClass=this.tagClass-1
        }
-       
     },
     changePath(i){
       this.tagClass=i
