@@ -24,7 +24,8 @@
           <el-dropdown trigger="click">
             <span class="el-dropdown-link"><img src="../../static/image/avatar.gif"><i class="el-icon-arrow-down el-icon--right"></i></span>
             <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item>我的资料</el-dropdown-item>
+              <el-dropdown-item><router-link to="">我的资料</router-link></el-dropdown-item>
+              <el-dropdown-item><a target="_bank" href="https://github.com/ITNood/vue-element-admin">GitHub</a></el-dropdown-item>
               <el-dropdown-item>退出登录</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>

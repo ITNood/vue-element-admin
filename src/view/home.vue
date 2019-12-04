@@ -1,16 +1,15 @@
 <template>
-  <div class="home">
-    <router-view/>
+  <div class="layout">
+    <Table/>
   </div>
 </template>
 
 <script>
+import Table from "../component/home/index";
 export default {
-  name: "Home",
-
+  components: { Table },
   data() {
-    return {
-    };
+    return {};
   },
   methods: {
     handleOpen(key, keyPath) {

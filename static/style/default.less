@@ -50,7 +50,8 @@ a {
     top: 0;
     right: 0;
     left: 250px;
-    background: rag(255, 255, 255);
+    z-index: 999;
+    background: rgb(255, 255, 255);
     box-shadow: 0 4px 5px rgba(48, 65, 86, .3);
     padding: 0 15px;
     height: 80px;
@@ -84,6 +85,7 @@ a {
 
                 a {
                     display: block;
+
                     i {
                         font-size: 24px;
                         color: #606266;
@@ -112,6 +114,7 @@ a {
         }
     }
 
+
     .tag-view {
         overflow-x: auto;
         border-top: 1px solid #f1f1f1;
@@ -137,4 +140,35 @@ a {
             }
         }
     }
+}
+
+.el-dropdown-menu {
+    .el-dropdown-menu__item {
+        a {
+            color: #606266;
+            display: block;
+
+            &:hover {
+                color: #66b1ff;
+            }
+        }
+    }
+}
+
+.layout {
+    height: calc(100vh - 80px);
+    margin-left: 250px;
+    margin-top: 80px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.page {
+    text-align: center;
+    margin: 20px 0;
+}
+
+#echarts1 {
+    height: 400px;
+    width: 100%;
 }

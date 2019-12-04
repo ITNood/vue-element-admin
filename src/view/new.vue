@@ -1,21 +1,19 @@
 <template>
-  <div class="home">
-      123
-      </div>
+  <div class="layout">
+    <Echarts />
+  </div>
 </template>
 
 <script>
+import Echarts from "../component/new/index";
 export default {
-  name: 'news',
-  data () {
-    return {
-   
-    }
+  components: { Echarts },
+  data() {
+    return {};
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
 </style>
