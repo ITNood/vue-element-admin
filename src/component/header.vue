@@ -32,20 +32,20 @@
         </div>
       </div>
       <div class="tag-view">
-        <router-link
-          :to="tag.path"
-          v-for="(tag,i) in mune"
-          :key="i"
-        >
+
           <el-tag
+           @click="changePath(i)"
+           v-for="(tag,i) in mune"
+           :class=" i==tagClass ? 'taglist':''"
+            :key="i"
             :closable="i>0"
             :disable-transitions="false"
             @close="handleClose(i)"
           >
             {{tag.title}}
           </el-tag>
-        </router-link>
       </div>
+
     </div>
   </div>
 </template>
@@ -63,7 +63,8 @@ export default {
       list: [],
       mune: [],
       menuList: [],
-      value:15
+      value:15,
+      tagClass:0
     };
   },
   created() {
@@ -90,6 +91,32 @@ export default {
     //标签关闭
     handleClose(i) {
       this.mune.splice(i, 1);
+      // console.log(this.mune.length)
+      
+       if(this.mune.length==i){
+         console.log(1)
+        this.$router.push(this.mune[i-1].path)
+       }else{
+          this.tagClass=this.tagClass-1
+       }
+       
+    },
+    changePath(i){
+      this.tagClass=i
+      this.$router.push(this.mune[i].path)
+    },
+     routes(){
+      var routes = {
+        children: this.$router.options.routes
+      };
+ 
+      var route = this.$route.matched;
+ 
+      for(var i=0; i<route.length-1; i++){
+        routes = routes.children.find((e) => (e.name == route[i].name));
+      }
+      
+      return routes.children
     }
   },
   watch: {
@@ -110,15 +137,18 @@ export default {
       //console.log(to)
       newlist.title = to.meta.title;
       newlist.path = to.path;
-     // console.log(to);
       let ispush = true;
-      this.mune.map(list => {
+      let newroute = this.routes()
+      this.mune.map((list,i)=> {
         if (list.title == newlist.title) {
           ispush = false;
+          this.tagClass=i
         }
       });
+     
       if (ispush) {
         this.mune.push(newlist);
+        this.tagClass=this.mune.length-1
       }
 
       // 对路由变化作出响应...

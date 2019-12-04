@@ -1,13 +1,13 @@
 <template>
   <div class="layout">
-    <Echarts />
+   <router-view />
   </div>
 </template>
 
 <script>
-import Echarts from "../component/new/index";
+//import Echarts from "../component/new/index";
 export default {
-  components: { Echarts },
+  //components: { Echarts },
   data() {
     return {};
   }
