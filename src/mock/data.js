@@ -27,7 +27,9 @@ export default [
         url: '/user/login',
         type: 'post',
         response: config => {
-            const { username } = config.body
+            console.log(config)
+            const  username = JSON.parse(config.body).username
+            console.log(username)
             const token = tokens[username]
             if (!token) {
                 return {

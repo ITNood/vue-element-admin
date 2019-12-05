@@ -41,19 +41,25 @@ export function mockXHR() {
     // }
 }
 
+
+
+
 // for mock server
 const responseFake = (url, type, respond) => {
-    return {
-        url: url,
-        type: type || 'get',
-        response(req, res) {
-            res.json(Mock.mock(respond instanceof Function ? respond(req, res) : respond))
+    return Mock.mock(
+        url,
+         type || 'get',
+        function(req, res) {
+            return Mock.mock(respond instanceof Function ? respond(req, res) : respond)
         }
-    }
+    )
+        
+    
 }
+
+
 
 export default mocks.map(route => {
     console.log(route.url)
     return responseFake(route.url, route.type, route.response)
-
 })
