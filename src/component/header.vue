@@ -10,7 +10,6 @@
           <el-breadcrumb-item
             v-for="(item,i) in list"
             :key="i"
-            :to="{ path: item.path }"
           >{{item.title}}</el-breadcrumb-item>
         </el-breadcrumb>
         <div class="user">
@@ -32,7 +31,6 @@
         </div>
       </div>
       <div class="tag-view">
-
           <el-tag
            @click="changePath(i)"
            v-for="(tag,i) in mune"
