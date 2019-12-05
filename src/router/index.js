@@ -7,8 +7,8 @@ export default new Router({
       name: "home",
       path: "/",
       component: ()=>import('@/view/home'),
-      meta: { title: "仓库", icon: "el-icon-s-tools", },
-      children: []
+      meta: { title: "首页", icon: "el-icon-s-tools", },
+       children: []
     },
     {
       //name: "导航",
@@ -18,30 +18,30 @@ export default new Router({
       children: [
         {
           //name属性与一级一致则不会新增
-          name: "new",
-          path: "/new",
-          component: ()=>import('@/view/new'),
-          meta: { title: "新闻", icon: "" },
+          name: "echarts",
+          path: "/echarts",
+          component: ()=>import('@/view/echarts'),
+          meta: { title: "echarts", icon: "" },
         },
 
         {
           name: "one",
           path: "/one",
           component: ()=>import('@/view/one'),
-          meta: { title: "我的", icon: "" },
+          meta: { title: "我的"},
         },
         
         {
           name: "two",
           path: "/two",
           component: ()=>import('@/view/two'),
-          meta: { title: "数据", icon: "" },
+          meta: { title: "数据"},
           children: [
             {
               name: "tre",
               path: "/tre",
               component: ()=>import('@/view/tre'),
-              meta: { title: "接口", icon: "" },
+              meta: { title: "接口"},
             },
           ]
         }

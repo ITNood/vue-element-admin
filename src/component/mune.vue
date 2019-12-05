@@ -17,7 +17,7 @@
       </template>
       <template v-for="child in item.children">
         <sidebar-item
-          v-if="child.children&&child.children.length>0"
+          v-if="child.children && child.children.length>0"
           :item="child"
           :key="child.path"
         />
@@ -42,7 +42,7 @@ export default {
     }
   },
   mounted() {
-    console.log(this.item);
+   // console.log(this.item);
   }
 };
 </script>

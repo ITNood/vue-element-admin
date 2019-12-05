@@ -10,7 +10,6 @@
           <el-breadcrumb-item
             v-for="(item,i) in list"
             :key="i"
-            :to="{ path: item.path }"
           >{{item.title}}</el-breadcrumb-item>
         </el-breadcrumb>
         <div class="user">
@@ -32,7 +31,6 @@
         </div>
       </div>
       <div class="tag-view">
-
           <el-tag
            @click="changePath(i)"
            v-for="(tag,i) in mune"
@@ -71,7 +69,7 @@ export default {
     this.menuList = this.$router.options.routes;
   },
   mounted() {
-    console.log(this.menuList);
+    //console.log(this.menuList);
     // console.log(this.$router.options.routes);
     let data = {};
     //页面最初赋值
@@ -152,7 +150,7 @@ export default {
       }
 
       // 对路由变化作出响应...
-      console.log(to.path);
+     // console.log(to.path);
       this.active = to.path;
     }
   }

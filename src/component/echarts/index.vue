@@ -1,24 +1,20 @@
 <template>
   <div>
-    <el-row :gutter="15">
-      <el-col :span="8">
-        <div id="echarts1"></div>
-      </el-col>
-    </el-row>
+    <div id="echarts1"></div>
   </div>
 </template>
 
 <script>
+import echarts from "echarts";
 export default {
   name: "Echarts",
   data() {
     return {};
   },
   mounted() {
-    console.log(this)
-    var myChart = this.$echarts.init(document.getElementById("echarts1"));
+    let myChart = echarts.init(document.getElementById("echarts1"));
     // 指定图表的配置项和数据
-    var option = {
+    const option = {
       backgroundColor: "#323a5e",
       tooltip: {
         trigger: "axis",
@@ -172,35 +168,6 @@ export default {
         }
       ]
     };
-
-    // var app = {
-    //   currentIndex: -1
-    // };
-    // setInterval(function() {
-    //   var dataLen = option.series[0].data.length;
-
-    //   // 取消之前高亮的图形
-    //   myChart.dispatchAction({
-    //     type: "downplay",
-    //     seriesIndex: 0,
-    //     dataIndex: app.currentIndex
-    //   });
-    //   app.currentIndex = (app.currentIndex + 1) % dataLen;
-    //   //console.log(app.currentIndex);
-    //   // 高亮当前图形
-    //   myChart.dispatchAction({
-    //     type: "highlight",
-    //     seriesIndex: 0,
-    //     dataIndex: app.currentIndex
-    //   });
-    //   // 显示 tooltip
-    //   myChart.dispatchAction({
-    //     type: "showTip",
-    //     seriesIndex: 0,
-    //     dataIndex: app.currentIndex
-    //   });
-    // }, 1000);
-
     // 使用刚指定的配置项和数据显示图表。
     myChart.setOption(option);
   }

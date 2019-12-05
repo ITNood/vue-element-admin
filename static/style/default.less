@@ -120,22 +120,21 @@ a {
         border-top: 1px solid #f1f1f1;
         padding-top: 2px;
 
-        a {
-            margin-right: 10px;
+        .el-tag {
+            margin-right: 8px;
+            cursor: pointer;
         }
 
-        .router-link-exact-active {
-            .el-tag {
-                background-color: rgb(64, 158, 255) !important;
-                color: white;
+        .taglist {
+            background-color: #66b1ff;
+            color: #fff;
 
-                i {
-                    color: white;
+            i {
+                color: #fff !important;
 
-                    &:hover {
-                        background-color: white;
-                        color: rgb(64, 158, 255);
-                    }
+                &:hover {
+                    background: #66b1ff;
+                    // color: white;
                 }
             }
         }
@@ -168,18 +167,18 @@ a {
     margin: 20px 0;
 }
 
-#echarts1 {
+#echarts1,
+#echarts2,
+#echarts3 {
     height: 400px;
-    width: 100%;
+    // width: 100%;
+    box-shadow: 0 0 5px rgba(48, 65, 86, 0.3);
+    display: block;
+    margin: 0 auto;
 }
-.taglist {
-    background-color: #66b1ff;
-    color: #fff;
-    i{
-        color: #fff !important;
-        &:hover{
-            background: #66b1ff;
-           // color: white;
-        }
+
+.echarts{
+    .el-col{
+        margin-top:10px
     }
 }

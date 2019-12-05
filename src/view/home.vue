@@ -9,14 +9,21 @@ import Table from "../component/home/index";
 export default {
   components: { Table },
   data() {
-    return {};
+    return {
+      username:'admin',
+      password:'111111'
+    };
+  },
+  mounted() {
+    this.login()
   },
   methods: {
-    handleOpen(key, keyPath) {
-      console.log(key, keyPath);
-    },
-    handleClose(key, keyPath) {
-      console.log(key, keyPath);
+    login(){
+      this.$axios.post('/user/login', {username:this.username,password:this.password}).then(response=>{
+        console.log(response)
+      }).catch(err=>{
+        console.log(err)
+      })
     }
   }
 };
