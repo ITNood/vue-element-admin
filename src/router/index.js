@@ -6,13 +6,15 @@ export default new Router({
     {
       name: "home",
       path: "/",
-      component: ()=>import('@/view/home'),
+      component: ()=>import('@/component/header.vue'),
       meta: { title: "首页", icon: "el-icon-s-tools", },
        children: []
     },
     {
       //name: "导航",
       path: "/redirect",
+      component: ()=>import('@/component/header.vue'),
+      redirect:"echarts",
       meta: { title: "导航", icon: "el-icon-menu" },
       children: [
         {
@@ -29,11 +31,19 @@ export default new Router({
           component: ()=>import('@/view/one'),
           meta: { title: "我的"},
         },
-        
+
+      ]
+    },
+    {
+      name: "home",
+      path: "/",
+      component: ()=>import('@/component/header.vue'),
+      meta: { title: "首页", icon: "el-icon-s-tools", },
+       children: [
         {
           path: '/excel',
-          //component: Layout,
-          redirect: '/excel/export-excel',
+          component: ()=>import('@/view/excel/route.vue'),
+          redirect:"/excel/export-excel",
           name: 'Excel',
           meta: {
             title: 'Excel',
@@ -41,16 +51,17 @@ export default new Router({
           },
           children: [
             {
-              path: 'export-excel',
-              component: () => import('@/views/excel/export-excel'),
+              path: '/export-excel',
+              component: () => import('@/view/excel/export-excel'),
               name: 'ExportExcel',
               meta: { title: 'Export Excel' }
             },
             
           ]
         },
-      ]
+       ]
     },
+ 
 
   ]
 })

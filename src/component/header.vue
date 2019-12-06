@@ -43,7 +43,7 @@
             {{tag.title}}
           </el-tag>
       </div>
-
+          <router-view></router-view>
     </div>
   </div>
 </template>
