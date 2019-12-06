@@ -5,9 +5,9 @@
 </template>
 
 <script>
-import Table from "../component/home/index";
+import Header from "../component/header";
 export default {
-  components: { Table },
+  components: { TaHeaderble },
   data() {
     return {
       username:'admin',

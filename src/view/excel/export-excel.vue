@@ -1,5 +1,5 @@
 <template>
- <div>
+ <div class="layout">
             1111111111111111145645646
  </div>
 </template>

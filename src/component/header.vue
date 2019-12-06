@@ -43,8 +43,8 @@
             {{tag.title}}
           </el-tag>
       </div>
-          <router-view></router-view>
-    </div>
+        <router-view></router-view>
+      </div>
   </div>
 </template>
 <script>
@@ -66,11 +66,33 @@ export default {
     };
   },
   created() {
-    this.menuList = this.$router.options.routes;
+   // this.menuList = this.$router.options.routes;
+   this.menuList = [{
+                     name: "home",
+                     path: "/home",
+                     component: ()=>import('@/component/header.vue'),
+                     meta: { title: "首页", icon: "el-icon-s-tools"},
+                     children: [
+                            {
+                                path: "/redirect",
+                                component: ()=>import('@/component/header.vue'),
+                                meta: { title: "导航", icon: "el-icon-menu" },
+                                children: [
+                                     {
+                                        path: "/echart",
+                                        component: ()=>import('@/view/echarts.vue'),
+                                        meta: { title: "导航", icon: "el-icon-menu" },
+                                        children: [
+                                        ]
+                                    }
+                                ]
+                            }
+                     ]
+                   }]
   },
   mounted() {
-    //console.log(this.menuList);
-    // console.log(this.$router.options.routes);
+    console.log(this.menuList);
+    console.log(this.$router.options.routes);
     let data = {};
     //页面最初赋值
     this.active = this.$route.path;
@@ -83,7 +105,7 @@ export default {
     data.path = this.menuList[0].path;
     this.mune = this.mune.concat(data);
     this.list = this.list.concat(data);
-    // console.log(this.$route)
+    console.log(this.$route)
   },
   methods: {
     //标签关闭
