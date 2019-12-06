@@ -23,27 +23,32 @@
           <el-dropdown trigger="click">
             <span class="el-dropdown-link"><img src="../../static/image/avatar.gif"><i class="el-icon-arrow-down el-icon--right"></i></span>
             <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item><router-link to="">我的资料</router-link></el-dropdown-item>
-              <el-dropdown-item><a target="_bank" href="https://github.com/ITNood/vue-element-admin">GitHub</a></el-dropdown-item>
+              <el-dropdown-item>
+                <router-link to="">我的资料</router-link>
+              </el-dropdown-item>
+              <el-dropdown-item><a
+                  target="_bank"
+                  href="https://github.com/ITNood/vue-element-admin"
+                >GitHub</a></el-dropdown-item>
               <el-dropdown-item>退出登录</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
         </div>
       </div>
       <div class="tag-view">
-          <el-tag
-           @click="changePath(i)"
-           v-for="(tag,i) in mune"
-           :class=" i==tagClass ? 'taglist':''"
-            :key="i"
-            :closable="i>0"
-            :disable-transitions="false"
-            @close="handleClose(i)"
-          >
-            {{tag.title}}
-          </el-tag>
+        <el-tag
+          @click="changePath(i)"
+          v-for="(tag,i) in mune"
+          :class=" i==tagClass ? 'taglist':''"
+          :key="i"
+          :closable="i>0"
+          :disable-transitions="false"
+          @close="handleClose(i)"
+        >
+          {{tag.title}}
+        </el-tag>
       </div>
-          <router-view></router-view>
+      <!-- <router-view></router-view> -->
     </div>
   </div>
 </template>
@@ -61,8 +66,8 @@ export default {
       list: [],
       mune: [],
       menuList: [],
-      value:15,
-      tagClass:0
+      value: 15,
+      tagClass: 0
     };
   },
   created() {
@@ -90,31 +95,31 @@ export default {
     handleClose(i) {
       this.mune.splice(i, 1);
       // console.log(this.mune.length)
-      
-       if(this.mune.length==i){
-        this.$router.push(this.mune[i-1].path)
-       }else if(this.tagClass<i){
-         return
-       }else{
-          this.tagClass=this.tagClass-1
-       }
+
+      if (this.mune.length == i) {
+        this.$router.push(this.mune[i - 1].path);
+      } else if (this.tagClass < i) {
+        return;
+      } else {
+        this.tagClass = this.tagClass - 1;
+      }
     },
-    changePath(i){
-      this.tagClass=i
-      this.$router.push(this.mune[i].path)
+    changePath(i) {
+      this.tagClass = i;
+      this.$router.push(this.mune[i].path);
     },
-     routes(){
+    routes() {
       var routes = {
         children: this.$router.options.routes
       };
- 
+
       var route = this.$route.matched;
- 
-      for(var i=0; i<route.length-1; i++){
-        routes = routes.children.find((e) => (e.name == route[i].name));
+
+      for (var i = 0; i < route.length - 1; i++) {
+        routes = routes.children.find(e => e.name == route[i].name);
       }
-      
-      return routes.children
+
+      return routes.children;
     }
   },
   watch: {
@@ -136,21 +141,21 @@ export default {
       newlist.title = to.meta.title;
       newlist.path = to.path;
       let ispush = true;
-      let newroute = this.routes()
-      this.mune.map((list,i)=> {
+      let newroute = this.routes();
+      this.mune.map((list, i) => {
         if (list.title == newlist.title) {
           ispush = false;
-          this.tagClass=i
+          this.tagClass = i;
         }
       });
-     
+
       if (ispush) {
         this.mune.push(newlist);
-        this.tagClass=this.mune.length-1
+        this.tagClass = this.mune.length - 1;
       }
 
       // 对路由变化作出响应...
-     // console.log(to.path);
+      // console.log(to.path);
       this.active = to.path;
     }
   }

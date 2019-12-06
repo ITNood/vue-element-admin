@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Table from "../component/home/index";
+import Table from "../../component/home/index";
 export default {
   components: { Table },
   data() {

@@ -1,18 +1,20 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import layout from '../layout'
 Vue.use(Router)
 export default new Router({
   routes: [
     {
       name: "home",
       path: "/",
-      meta: { title: "首页", icon: "el-icon-s-tools", component: () => import('@/view/home.vue'),},
+      component: () => import('@/view/home/index.vue'),
+      meta: { title: "首页", icon: "el-icon-s-tools", },
       children: []
     },
     {
       //name: "导航",
       path: "/redirect",
-      component: ()=>import('@/component/header.vue'),
+      component: ()=>import('@/view/route.vue'),
       redirect:"echarts",
       meta: { title: "导航", icon: "el-icon-menu" },
       children: [
@@ -38,7 +40,7 @@ export default new Router({
         },
         {
           path: '/excel',
-          component: () => import('@/view/excel/route.vue'),
+          component: layout,
           redirect: "/excel/export-excel",
           name: 'Excel',
           meta: {
@@ -58,7 +60,5 @@ export default new Router({
 
       ]
     },
- 
-
   ]
 })
