@@ -1,25 +1,25 @@
 
-const muneroute ={
-                     name: "home",
-                     path: "/home",
-                     component: ()=>import('@/component/header.vue'),
-                     meta: { title: "首页", icon: "el-icon-s-tools"},
-                     children: [
-                            {
-                                path: "/redirect",
-                                component: ()=>import('@/view/route.vue'),
-                                meta: { title: "新闻", icon: "el-icon-menu" },
-                                children: [
-                                    {
-                                        path: "/echart",
-                                        component: ()=>import('@/view/echarts.vue'),
-                                        meta: { title: "导航", icon: "el-icon-menu" },
-                                        children: []
-                                    }
-                                ]
-                            }
-                     ]
-            }
+const muneroute = {
+    name: "home",
+    path: "/home",
+    component: () => import('@/component/header.vue'),
+    meta: { title: "首页", icon: "el-icon-s-tools" },
+    children: [
+        {
+            path: "/redirect",
+            component: () => import('@/view/route.vue'),
+            meta: { title: "新闻", icon: "el-icon-menu" },
+            children: [
+                {
+                    path: "/echart",
+                    component: () => import('@/view/echarts.vue'),
+                    meta: { title: "导航", icon: "el-icon-menu" },
+                    children: []
+                }
+            ]
+        }
+    ]
+}
 
 
 
@@ -29,7 +29,7 @@ export default muneroute
 
 
 
-    
+
     //     {
     //         name: "home",
     //         path: "/home",
@@ -51,7 +51,7 @@ export default muneroute
     //             component: ()=>import('@/view/echarts'),
     //             meta: { title: "echarts", icon: "" },
     //           },
-      
+
     //           {
     //             name: "one",
     //             path: "/one",
@@ -80,9 +80,9 @@ export default muneroute
     //                 name: 'ExportExcel',
     //                 meta: { title: 'Export Excel' }
     //               },
-      
+
     //             ]
     //           },
-      
+
     //         ]
     //       }
