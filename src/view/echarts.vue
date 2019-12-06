@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div  class="layout">
     <div class="echarts">
       <el-row :gutter="15">
         <el-col :lg="8" :md="12" :sm="24" :xs="24">

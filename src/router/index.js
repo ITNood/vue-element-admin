@@ -6,7 +6,8 @@ export default new Router({
     {
       name: "home",
       path: "/",
-      meta: { title: "首页", icon: "el-icon-s-tools", component: () => import('@/view/home.vue'),},
+      component: () => import('@/view/home.vue'),
+      meta: { title: "首页", icon: "el-icon-s-tools"},
       children: []
     },
     {
