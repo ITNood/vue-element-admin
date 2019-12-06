@@ -6,9 +6,8 @@ export default new Router({
     {
       name: "home",
       path: "/",
-      component: ()=>import('@/component/header.vue'),
-      meta: { title: "首页", icon: "el-icon-s-tools", },
-       children: []
+      meta: { title: "首页", icon: "el-icon-s-tools", component: () => import('@/view/home.vue'),},
+      children: []
     },
     {
       //name: "导航",
@@ -31,19 +30,16 @@ export default new Router({
           component: ()=>import('@/view/one'),
           meta: { title: "我的"},
         },
-
-      ]
-    },
-    {
-      name: "home",
-      path: "/",
-      component: ()=>import('@/component/header.vue'),
-      meta: { title: "首页", icon: "el-icon-s-tools", },
-       children: [
+        {
+          name: 'tre',
+          path: '/tre',
+          component: () => import('@/view/tre'),
+          meta:{title:'接口'}
+        },
         {
           path: '/excel',
-          component: ()=>import('@/view/excel/route.vue'),
-          redirect:"/excel/export-excel",
+          component: () => import('@/view/excel/route.vue'),
+          redirect: "/excel/export-excel",
           name: 'Excel',
           meta: {
             title: 'Excel',
@@ -56,10 +52,11 @@ export default new Router({
               name: 'ExportExcel',
               meta: { title: 'Export Excel' }
             },
-            
+
           ]
         },
-       ]
+
+      ]
     },
  
 

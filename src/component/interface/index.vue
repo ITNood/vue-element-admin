@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-tabel
+    <el-table
       :data="dataInterface"
       border
     >
@@ -14,7 +14,11 @@
         label="接口地址"
         prop="url"
       ></el-table-column>
-      <el-table-column align="center" label="名称" prop="name"></el-table-column>
+      <el-table-column
+        align="center"
+        label="名称"
+        prop="name"
+      ></el-table-column>
       <el-table-column
         align="center"
         label="参数"
@@ -31,19 +35,19 @@
           <el-button @click="dete(scope.$index,scope.row)">删除</el-button>
         </template>
       </el-table-column>
-    </el-tabel>
+    </el-table>
   </div>
 </template>
 
 <script>
 export default {
-  name: "DataInterface",
+  name: "Tabel",
   data() {
     return {
       dataInterface: [
         {
           url: "/user/login",
-          name:'登录',
+          name: "登录",
           prams: "username password (token)",
           request: "post"
         }

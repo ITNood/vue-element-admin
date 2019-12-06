@@ -1,13 +1,13 @@
 <template>
-  <div class="layout">
-    <DataInterface />
+  <div>
+    <Tabel />
   </div>
 </template>
 
 <script>
-import DataInterface from '../component/interface/index'
+import Tabel from '../component/interface/index'
 export default {
-  components:{DataInterface},
+  components:{Tabel},
   data() {
     return {};
   }
