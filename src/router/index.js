@@ -13,7 +13,6 @@ export default new Router({
     {
       //name: "导航",
       path: "/redirect",
-      component: ()=>import('@/view/four'),
       meta: { title: "导航", icon: "el-icon-menu" },
       children: [
         {
@@ -32,19 +31,24 @@ export default new Router({
         },
         
         {
-          name: "two",
-          path: "/two",
-          component: ()=>import('@/view/two'),
-          meta: { title: "数据"},
+          path: '/excel',
+          //component: Layout,
+          redirect: '/excel/export-excel',
+          name: 'Excel',
+          meta: {
+            title: 'Excel',
+            icon: 'excel'
+          },
           children: [
             {
-              name: "tre",
-              path: "/tre",
-              component: ()=>import('@/view/tre'),
-              meta: { title: "接口"},
+              path: 'export-excel',
+              component: () => import('@/views/excel/export-excel'),
+              name: 'ExportExcel',
+              meta: { title: 'Export Excel' }
             },
+            
           ]
-        }
+        },
       ]
     },
 

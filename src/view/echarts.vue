@@ -13,7 +13,9 @@
         </el-col>
       </el-row>
     </div>
-    
+
+    <!--tabel-->
+    <Tabel/>
   </div>
 </template>
 
@@ -21,8 +23,9 @@
 import Echarts from "../component/echarts/index";
 import Echarts2 from '../component/echarts/echarts'
 import Echarts3 from '../component/echarts/echarts3'
+import Tabel from '../component/echarts/table'
 export default {
-  components: { Echarts,Echarts2 ,Echarts3},
+  components: { Echarts,Echarts2 ,Echarts3,Tabel},
   data() {
     return {};
   }
