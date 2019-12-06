@@ -8,7 +8,7 @@ const muneroute ={
                             {
                                 path: "/redirect",
                                 component: ()=>import('@/view/route.vue'),
-                                meta: { title: "新闻", icon: "el-icon-menu" },
+                                meta: { title: "导航", icon: "el-icon-menu" },
                                 children: [
                                     {
                                         path: "/echart",

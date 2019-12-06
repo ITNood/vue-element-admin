@@ -9,7 +9,8 @@ const routerList= [
       path: "/",
       component: () => import('@/view/tre.vue'),
       meta: { title: "首页", icon: "el-icon-s-tools"},
-      children: []
+      children: [],
+      hidden:true
     },
     muneroute
   ]

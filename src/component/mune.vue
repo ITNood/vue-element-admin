@@ -1,5 +1,5 @@
 <template>
-  <div v-if="item.children">
+  <div v-if="item.hidden!==true">
     <template v-if="item.children.length == 0">
       <el-menu-item :index="item.path">
         <i :class="item.meta.icon"></i>
@@ -42,7 +42,7 @@ export default {
     }
   },
   mounted() {
-   // console.log(this.item);
+    console.log(this.item);
   }
 };
 </script>
