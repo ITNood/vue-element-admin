@@ -66,9 +66,8 @@ export default {
     };
   },
   created() {
-   this.menuList = this.$router.options.routes;
+   this.menuList = this.$router.options.routes[1].children;
    console.log(this.menuList)
-   
   },
   mounted() {
     console.log(this.menuList);
