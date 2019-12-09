@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 Vue.use(Router)
-import muneroute from './route'
+// import muneroute from './route'
 
 const routerList= [
     {
@@ -9,9 +9,21 @@ const routerList= [
       path: "/",
       component: () => import('@/view/tre.vue'),
       meta: { title: "首页", icon: "el-icon-s-tools"},
-      // children: []
+      children: [],
+      hidden:true
     },
    // muneroute
+  {
+    name: 'echarts',
+    path: '/echarts',
+    component: () => import('@/component/header.vue'),
+    meta: {
+      title:'Echarts',
+    },
+    children: [
+      
+    ]
+  },
   {
     name: "home",
     path: "/home",

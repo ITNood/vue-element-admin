@@ -71,30 +71,8 @@ export default {
     };
   },
   created() {
-    // this.menuList = this.$router.options.routes;
-    this.menuList = [
-      {
-        name: "home",
-        path: "/home",
-        component: () => import("@/component/header.vue"),
-        meta: { title: "首页", icon: "el-icon-s-tools" },
-        children: [
-          {
-            path: "/redirect",
-            component: () => import("@/component/header.vue"),
-            meta: { title: "导航", icon: "el-icon-menu" },
-            children: [
-              {
-                path: "/echart",
-                component: () => import("@/view/echarts.vue"),
-                meta: { title: "导航", icon: "el-icon-menu" },
-                children: []
-              }
-            ]
-          }
-        ]
-      }
-    ];
+   this.menuList = this.$router.options.routes;
+   console.log(this.menuList)
   },
   mounted() {
     console.log(this.menuList);
