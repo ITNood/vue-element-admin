@@ -48,8 +48,8 @@
           {{tag.title}}
         </el-tag>
       </div>
-      <router-view></router-view>
     </div>
+    <router-view></router-view>
   </div>
 </template>
 <script>
@@ -71,7 +71,7 @@ export default {
     };
   },
   created() {
-   this.menuList = this.$router.options.routes;
+   this.menuList = this.$router.options.routes[1].children;
    console.log(this.menuList)
   },
   mounted() {

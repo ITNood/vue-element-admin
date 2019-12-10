@@ -8,6 +8,8 @@ import 'element-ui/lib/theme-chalk/index.css';
 import '../static/style/default.less'
 require('./mock/index')
 import axios from 'axios'
+import VueParticles from 'vue-particles'
+Vue.use(VueParticles)  
 
 Vue.prototype.$axios=axios
 Vue.config.productionTip = false

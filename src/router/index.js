@@ -1,52 +1,69 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 Vue.use(Router)
-// import muneroute from './route'
-
-const routerList= [
-    {
-      name: "login",
-      path: "/",
-      component: () => import('@/view/tre.vue'),
-      meta: { title: "首页", icon: "el-icon-s-tools"},
-      children: [],
-      hidden:true
-    },
-   // muneroute
+import layout from "../layout"
+const routerList = [
   {
-    name: 'echarts',
-    path: '/echarts',
-    component: () => import('@/component/header.vue'),
-    meta: {
-      title:'Echarts',
-    },
-    children: [
-      
-    ]
+    name: "login",
+    path: "/",
+    component: () => import('@/view/login/index.vue'),
+    //meta: { title: "首页", icon: "el-icon-s-tools" },
+    children: []
   },
   {
     name: "home",
     path: "/home",
+    redirect: "index",
     component: () => import('@/component/header.vue'),
     meta: { title: "首页", icon: "el-icon-s-tools" },
     children: [
       {
+        name: "index",
+        path: "/index",
+        component: () => import('@/view/tre.vue'),
+        meta: { title: "接口", icon: "el-icon-menu" },
+        children: [],
+      },
+      {
+        name: "redirect",
         path: "/redirect",
+        redirect: "/echart",
         component: () => import('@/view/route.vue'),
-        meta: { title: "新闻", icon: "el-icon-menu" },
+        meta: { title: "导航", icon: "el-icon-menu" },
         children: [
           {
+            name: "echart",
             path: "/echart",
             component: () => import('@/view/echarts.vue'),
-            meta: { title: "导航", icon: "el-icon-menu" },
+            meta: { title: "echart", icon: "el-icon-menu" },
             children: []
-          }
+          },
         ]
-      }
+      },
+      {
+        path: "/one",
+        component: () => import('@/view/route.vue'),
+        meta: { title: "导航", icon: "el-icon-menu" },
+        children: [
+          {
+            path: "/name",
+            redirect: "/name",
+            component: () => import('@/view/route.vue'),
+            meta: { title: "name", icon: "el-icon-menu" },
+            children: [
+              {
+                path: "/nico",
+                component: () => import('@/view/home/index.vue'),
+                meta: { title: "nico", icon: "el-icon-menu" },
+                children: []
+              },
+            ]
+          },
+        ]
+      },
     ]
-  }
-
-  ]
+  },
+]
 
 
 const createRouter = () => new Router({

@@ -55,7 +55,6 @@
 <script>
 import Sidebar from "./muneitem.vue";
 export default {
-  name: "Header",
   components: {
     Sidebar
   },

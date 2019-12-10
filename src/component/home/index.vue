@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Header/>
     <el-table
       :data="data"
       border

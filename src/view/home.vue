@@ -10,21 +10,10 @@ export default {
   components: { TaHeaderble },
   data() {
     return {
-      username:'admin',
-      password:'111111'
+      
     };
   },
-  mounted() {
-    this.login()
-  },
   methods: {
-    login(){
-      this.$axios.post('/user/login', {username:this.username,password:this.password}).then(response=>{
-        console.log(response)
-      }).catch(err=>{
-        console.log(err)
-      })
-    }
   }
 };
 </script>
