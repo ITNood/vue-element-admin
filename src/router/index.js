@@ -19,8 +19,8 @@ const routerList = [
     children: [
       {
         name: "index",
-        path: "/index",
-        component: () => import('@/view/tre.vue'),
+        path: "/first",
+        component: () => import('@/view/first.vue'),
         meta: { title: "接口", icon: "el-icon-menu" },
         children: [],
       },
@@ -52,8 +52,8 @@ const routerList = [
             meta: { title: "name", icon: "el-icon-menu" },
             children: [
               {
-                path: "/nico",
-                component: () => import('@/view/home/index.vue'),
+                path: "/tre",
+                component: () => import('@/view/tre.vue'),
                 meta: { title: "nico", icon: "el-icon-menu" },
                 children: []
               },

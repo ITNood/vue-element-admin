@@ -57,7 +57,7 @@ export default {
         .then(response => {
           console.log(response);
           localStorage.setItem('token',response.data.data.token)//存储token
-          this.$router.push('/home')//登录成功跳转主页
+          this.$router.push('/first')//登录成功跳转主页
         })
         .catch(err => {
           console.log(err);

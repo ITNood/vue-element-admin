@@ -1,13 +1,13 @@
 <template>
-  <div  class="layout">
-    <Table/>
+  <div class="layout">
+    <Table />
   </div>
 </template>
 
 <script>
-import Header from "../component/header";
+import Tabel from '../component/interface/index'
 export default {
-  components: { TaHeaderble },
+  components: { Table },
   data() {
     return {
       
