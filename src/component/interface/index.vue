@@ -49,10 +49,26 @@ export default {
           url: "/user/login",
           name: "登录",
           prams: "username password (token)",
-          request: "post"
+          request: "post",
+          id:'01'
+        },
+        {
+          url: "/user/loginout",
+          name: "退出登录",
+          prams: "Not",
+          request: "post",
+          id:'02'
         }
       ]
     };
+  },
+  methods:{
+    edit(index,row){
+      console.log(index,row)
+    },
+    dete(index,row){
+      console.log(index,row)
+    }
   }
 };
 </script>

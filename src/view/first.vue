@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Tabel from '../component/interface/index'
+import Table from '../component/interface/index'
 export default {
   components: { Table },
   data() {

@@ -43,7 +43,7 @@ const routerList = [
       {
         path: "/one",
         component: () => import('@/view/route.vue'),
-        meta: { title: "导航", icon: "el-icon-menu" },
+        meta: { title: "三级菜单", icon: "el-icon-menu" },
         children: [
           {
             path: "/name",
@@ -58,6 +58,20 @@ const routerList = [
                 children: []
               },
             ]
+          },
+          {
+            name: "list",
+            path: "/list",
+            component: () => import('@/view/list.vue'),
+            meta: { title: "list", icon: "el-icon-menu" },
+            children: [],
+          },
+          {
+            name: "explame",
+            path: "/explame",
+            component: () => import('@/view/explame.vue'),
+            meta: { title: "explame", icon: "el-icon-s-flag" },
+            children: [],
           },
         ]
       },
