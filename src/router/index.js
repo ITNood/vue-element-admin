@@ -8,7 +8,7 @@ const routerList = [
     path: "/",
     component: () => import('@/view/login/index.vue'),
     //meta: { title: "首页", icon: "el-icon-s-tools" },
-    children: []
+    children: [],
   },
   {
     name: "home",
